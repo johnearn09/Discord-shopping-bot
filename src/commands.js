@@ -28,10 +28,10 @@ async function handleCommand(message, db, saveDb) {
             prefix: 'sho!',
             channels: { shopee: '', lazada: '', shein: '', r18: '' },
             schedules: {
-                shopee: { intervalHours: 5, enabled: true, nextIndex: 0 },
-                lazada: { intervalHours: 5, enabled: true, nextIndex: 0 },
-                shein: { intervalHours: 5, enabled: true, nextIndex: 0 },
-                r18: { intervalHours: 5, enabled: true, nextPage: 1 }
+                shopee: { intervalHours: 2, enabled: true, nextIndex: 0 },
+                lazada: { intervalHours: 2, enabled: true, nextIndex: 0 },
+                shein: { intervalHours: 2, enabled: true, nextIndex: 0 },
+                r18: { intervalHours: 2, enabled: true, nextPage: 1 }
             },
             lastPosted: { shopee: 0, lazada: 0, shein: 0, r18: 0 }
         }));
@@ -41,7 +41,7 @@ async function handleCommand(message, db, saveDb) {
     const guildSettings = db.guilds[guildId];
     const prefix = guildSettings.prefix;
 
-    // Flexible prefix check (allows 'shop!' as a fallback if prefix is 'sho!')
+    // Flexible prefix check
     let usedPrefix = '';
     if (message.content.startsWith(prefix)) {
         usedPrefix = prefix;
@@ -69,14 +69,14 @@ async function handleCommand(message, db, saveDb) {
                 .addFields(
                     { name: '📖 Commands Available to Everyone', value: 
                         `\`${prefix}help\` - Show this configuration panel.\n` +
-                        `\`${prefix}shop <category> [page_number]\` - View 10 items from a category page (1 to 5).\n` +
+                        `\`${prefix}shop <category> [page_number]\` - View 5 items from a category page (1 to 10).\n` +
                         `*Categories: \`shopee\`, \`lazada\`, \`shein\`, \`r18\`*\n` +
                         `*Examples: \`${prefix}shop shopee\`, \`${prefix}shop r18 2\`*`
                     },
                     { name: '⚙️ Settings Commands (Requires Manage Channels/Guild Perms)', value:
                         `\`${prefix}prefix <new_prefix>\` - Modify command prefix (e.g. \`sho!\`).\n` +
                         `\`${prefix}channel <category> <channel_id>\` - Change destination channel for a category.\n` +
-                        `\`${prefix}schedule <category> <interval_hours>\` - Set posting frequency (e.g. \`5\`).\n` +
+                        `\`${prefix}schedule <category> <interval_hours>\` - Set posting frequency (e.g. \`2\`).\n` +
                         `\`${prefix}schedule <category> <enable/disable>\` - Enable or disable the schedule.`
                     },
                     { name: '📊 Current Configurations', value:
@@ -107,66 +107,71 @@ async function handleCommand(message, db, saveDb) {
                 return message.reply(`❌ Please specify a valid category: \`shopee\`, \`lazada\`, \`shein\`, or \`r18\`.\n*Example: \`${prefix}shop shopee\` or \`${prefix}shop r18 2\`*`);
             }
 
-            if (isNaN(pageInput) || pageInput < 1 || pageInput > 5) {
-                return message.reply('❌ Please specify a valid page number between 1 and 5.\n*Example: `sho!shop r18 2`*');
+            if (isNaN(pageInput) || pageInput < 1 || pageInput > 10) {
+                return message.reply('❌ Please specify a valid page number between 1 and 10.\n*Example: `sho!shop r18 2`*');
             }
 
-            const feedbackMsg = await message.reply(`⏳ Fetching **${PLATFORM_NAMES[categoryInput]}** items (Page ${pageInput}/5)...`);
+            const feedbackMsg = await message.reply(`⏳ Fetching **${PLATFORM_NAMES[categoryInput]}** items (Page ${pageInput}/10)...`);
 
-            // Fetch affiliate parameters
-            const affiliateEnvKey = `${categoryInput.toUpperCase()}_AFFILIATE_PARAMS`;
-            const affiliateParams = process.env[affiliateEnvKey] || '';
+            try {
+                // Fetch affiliate parameters
+                const affiliateEnvKey = `${categoryInput.toUpperCase()}_AFFILIATE_PARAMS`;
+                const affiliateParams = process.env[affiliateEnvKey] || '';
 
-            const products = await fetchDeals(categoryInput, pageInput, affiliateParams);
+                const products = await fetchDeals(categoryInput, pageInput, affiliateParams);
 
-            if (!products || products.length === 0) {
-                return feedbackMsg.edit(`❌ Failed to fetch products for **${PLATFORM_NAMES[categoryInput]}** (Page ${pageInput}). Please try again later.`);
+                if (!products || products.length === 0) {
+                    return feedbackMsg.edit(`❌ Failed to fetch products for **${PLATFORM_NAMES[categoryInput]}** (Page ${pageInput}). Please try again later.`);
+                }
+
+                // Create embeds for products
+                const embeds = products.map(p => {
+                    const embed = new EmbedBuilder()
+                        .setURL(p.url)
+                        .setColor(BRAND_COLORS[categoryInput] || '#7289DA')
+                        .setImage(p.imageUrl || null)
+                        .setFooter({ text: `${PLATFORM_NAMES[categoryInput]} • Page ${pageInput}/10` });
+
+                    let titleEmoji = '🛍️';
+                    let titlePrefix = '';
+                    let descText = '';
+
+                    if (p.promoType === 'flash_sale') {
+                        titleEmoji = '⚡';
+                        titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
+                    } else if (p.promoType === 'day_sale') {
+                        titleEmoji = '🔥';
+                        titlePrefix = ' [DAILY DEAL]';
+                    } else if (p.promoType === 'month_sale') {
+                        titleEmoji = '📅';
+                        titlePrefix = ' [MONTHLY SPECIAL]';
+                    }
+
+                    embed.setTitle(`${titleEmoji}${titlePrefix} ${p.title}`);
+
+                    if (p.originalPrice && p.discountText) {
+                        descText = `~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n\n`;
+                    } else {
+                        descText = `**Price:** ${p.price}\n\n`;
+                    }
+
+                    descText += `[Click to View Product](${p.url})`;
+                    embed.setDescription(descText);
+
+                    return embed;
+                });
+
+                // Send products
+                await message.channel.send({
+                    content: `🛍️ **Showing 5 items from ${PLATFORM_NAMES[categoryInput]} (Page ${pageInput}/10):**`,
+                    embeds: embeds
+                });
+
+                await feedbackMsg.delete().catch(() => {});
+            } catch (err) {
+                console.error(`Error executing shop command:`, err.message);
+                await feedbackMsg.edit(`❌ Error executing command: ${err.message}`).catch(() => {});
             }
-
-            // Create embeds for all 10 products
-            const embeds = products.map(p => {
-                const embed = new EmbedBuilder()
-                    .setURL(p.url)
-                    .setColor(BRAND_COLORS[categoryInput] || '#7289DA')
-                    .setImage(p.imageUrl || null)
-                    .setFooter({ text: `${PLATFORM_NAMES[categoryInput]} • Page ${pageInput}/5` });
-
-                let titleEmoji = '🛍️';
-                let titlePrefix = '';
-                let descText = '';
-
-                if (p.promoType === 'flash_sale') {
-                    titleEmoji = '⚡';
-                    titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
-                } else if (p.promoType === 'day_sale') {
-                    titleEmoji = '🔥';
-                    titlePrefix = ' [DAILY DEAL]';
-                } else if (p.promoType === 'month_sale') {
-                    titleEmoji = '📅';
-                    titlePrefix = ' [MONTHLY SPECIAL]';
-                }
-
-                embed.setTitle(`${titleEmoji}${titlePrefix} ${p.title}`);
-
-                if (p.originalPrice && p.discountText) {
-                    descText = `~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n\n`;
-                } else {
-                    descText = `**Price:** ${p.price}\n\n`;
-                }
-
-                descText += `[Click to View Product](${p.url})`;
-                embed.setDescription(descText);
-
-                return embed;
-            });
-
-            // Send products
-            await message.channel.send({
-                content: `🛍️ **Showing 10 items from ${PLATFORM_NAMES[categoryInput]} (Page ${pageInput}/5):**`,
-                embeds: embeds
-            });
-
-            await feedbackMsg.delete().catch(() => {});
             break;
         }
 
@@ -227,7 +232,7 @@ async function handleCommand(message, db, saveDb) {
             }
 
             if (!actionInput) {
-                return message.reply(`❌ Please specify an action: an interval in hours (e.g. \`5\`), \`enable\`, or \`disable\`.\n*Example: \`${prefix}schedule shopee disable\` or \`${prefix}schedule shopee 5\`*`);
+                return message.reply(`❌ Please specify an action: an interval in hours (e.g. \`2\`), \`enable\`, or \`disable\`.\n*Example: \`${prefix}schedule shopee disable\` or \`${prefix}schedule shopee 2\`*`);
             }
 
             if (actionInput === 'disable') {
