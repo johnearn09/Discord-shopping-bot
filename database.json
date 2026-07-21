@@ -9,10 +9,10 @@
         "r18": "1528920388539519166"
       },
       "schedules": {
-        "shopee": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
-        "lazada": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
-        "shein": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
-        "r18": { "intervalHours": 5, "enabled": true, "nextPage": 1 }
+        "shopee": { "intervalHours": 2, "enabled": true, "nextIndex": 0 },
+        "lazada": { "intervalHours": 2, "enabled": true, "nextIndex": 0 },
+        "shein": { "intervalHours": 2, "enabled": true, "nextIndex": 0 },
+        "r18": { "intervalHours": 2, "enabled": true, "nextPage": 1 }
       },
       "lastPosted": {
         "shopee": 0,
