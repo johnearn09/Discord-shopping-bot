@@ -19,7 +19,7 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
     if (cleanParams.startsWith('http://') || cleanParams.startsWith('https://')) {
         try {
             const parsedUrl = new URL(cleanParams);
-            cleanParams = parsedUrl.search || ''; // Extract only the query (e.g., ?smtt=0.1)
+            cleanParams = parsedUrl.search || '';
         } catch (e) {
             cleanParams = '';
         }
@@ -89,7 +89,11 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
             const rawData = fs.readFileSync(filePath, 'utf8');
             const allItems = JSON.parse(rawData);
 
-            const startIndex = (pageNum - 1) * limit;
+            // Dynamically calculate maximum pages based on item count
+            const maxPages = Math.max(Math.ceil(allItems.length / limit), 1);
+            const actualPageNum = Math.min(pageNum, maxPages);
+
+            const startIndex = (actualPageNum - 1) * limit;
             const pageItems = allItems.slice(startIndex, startIndex + limit);
 
             return pageItems.map(item => {

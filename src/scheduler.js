@@ -41,12 +41,11 @@ async function checkAndPost(client, db, saveDb) {
         if (!schedule || !schedule.enabled || !channelId) continue;
 
         const lastPosted = guildSettings.lastPosted[category] || 0;
-        const intervalMs = (schedule.intervalHours || 5) * 60 * 60 * 1000;
+        const intervalMs = (schedule.intervalHours || 2) * 60 * 60 * 1000;
 
         if (now - lastPosted >= intervalMs) {
             console.log(`Category [${category}] is due for posting.`);
 
-            // Get random count of items between 5 and 10
             const count = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
             let itemsToPost = [];
             
@@ -54,18 +53,15 @@ async function checkAndPost(client, db, saveDb) {
             const affiliateParams = process.env[affiliateEnvKey] || '';
 
             if (category === 'r18') {
-                // R18 dynamic rotation page logic
                 if (!schedule.nextPage) schedule.nextPage = 1;
                 const page = schedule.nextPage;
 
                 const products = await fetchDeals('r18', page, affiliateParams);
                 if (products && products.length > 0) {
                     itemsToPost = products.slice(0, count);
-                    // Rotate page (1 to 5)
                     schedule.nextPage = page >= 5 ? 1 : page + 1;
                 }
             } else {
-                // Local deals continuous rotation index logic
                 if (schedule.nextIndex === undefined) schedule.nextIndex = 0;
                 const nextIndex = schedule.nextIndex;
 
@@ -75,29 +71,31 @@ async function checkAndPost(client, db, saveDb) {
                         const rawData = fs.readFileSync(filePath, 'utf8');
                         const allItems = JSON.parse(rawData);
 
-                        // Slice with wrap-around
-                        let sliced = allItems.slice(nextIndex, nextIndex + count);
-                        if (sliced.length < count) {
-                            const remaining = count - sliced.length;
-                            sliced = sliced.concat(allItems.slice(0, remaining));
+                        if (allItems.length > 0) {
+                            // Slice with wrap-around based on actual length of pool
+                            let sliced = allItems.slice(nextIndex, nextIndex + count);
+                            if (sliced.length < count) {
+                                const remaining = count - sliced.length;
+                                sliced = sliced.concat(allItems.slice(0, remaining));
+                            }
+
+                            // Apply affiliate params
+                            itemsToPost = sliced.map(item => {
+                                const baseUrl = item.url.trim();
+                                const cleanAff = affiliateParams ? (affiliateParams.startsWith('?') ? affiliateParams : '?' + affiliateParams) : '';
+                                return {
+                                    id: item.id,
+                                    title: item.title,
+                                    price: item.price,
+                                    promoType: item.promoType || null,
+                                    url: baseUrl + cleanAff,
+                                    imageUrl: item.imageUrl
+                                };
+                            });
+
+                            // Update index pointer using actual array length
+                            schedule.nextIndex = (nextIndex + count) % allItems.length;
                         }
-
-                        // Apply affiliate params
-                        itemsToPost = sliced.map(item => {
-                            const baseUrl = item.url;
-                            const cleanAff = affiliateParams ? (affiliateParams.startsWith('?') ? affiliateParams : '?' + affiliateParams) : '';
-                            return {
-                                id: item.id,
-                                title: item.title,
-                                price: item.price,
-                                promoType: item.promoType || null,
-                                url: baseUrl + cleanAff,
-                                imageUrl: item.imageUrl
-                            };
-                        });
-
-                        // Update index pointer
-                        schedule.nextIndex = (nextIndex + count) % 50;
                     }
                 } catch (err) {
                     console.error(`Error reading database for local category ${category}:`, err.message);
@@ -145,7 +143,6 @@ async function checkAndPost(client, db, saveDb) {
                             return embed;
                         });
 
-                        // Post in a single message (up to 10 embeds)
                         await channel.send({
                             content: `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**`,
                             embeds: embeds
@@ -156,7 +153,6 @@ async function checkAndPost(client, db, saveDb) {
                         guildSettings.lastPosted[category] = now;
                         dbChanged = true;
 
-                        // Save history
                         if (!db.postedHistory[category]) db.postedHistory[category] = [];
                         itemsToPost.forEach(item => {
                             if (!db.postedHistory[category].includes(item.id)) {
