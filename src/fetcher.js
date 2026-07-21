@@ -13,7 +13,18 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
     const limit = 5;
 
     // Clean affiliate parameters (strip quotes, trim spaces)
-    const cleanParams = (affiliateParams || '').replace(/^['"]|['"]$/g, '').trim();
+    let cleanParams = (affiliateParams || '').replace(/^['"]|['"]$/g, '').trim();
+    
+    // Robust check: If user accidentally pasted a full URL as the affiliate parameters, extract only the query part
+    if (cleanParams.startsWith('http://') || cleanParams.startsWith('https://')) {
+        try {
+            const parsedUrl = new URL(cleanParams);
+            cleanParams = parsedUrl.search || ''; // Extract only the query (e.g., ?smtt=0.1)
+        } catch (e) {
+            cleanParams = '';
+        }
+    }
+
     const cleanAffiliateParams = cleanParams ? (cleanParams.startsWith('?') ? cleanParams : '?' + cleanParams) : '';
 
     if (category === 'r18') {
