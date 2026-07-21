@@ -1,0 +1,31 @@
+{
+  "guilds": {
+    "default": {
+      "prefix": "sho!",
+      "channels": {
+        "shopee": "1528544690515742720",
+        "lazada": "1528919980807159808",
+        "shein": "1528920288547573780",
+        "r18": "1528920388539519166"
+      },
+      "schedules": {
+        "shopee": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
+        "lazada": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
+        "shein": { "intervalHours": 5, "enabled": true, "nextIndex": 0 },
+        "r18": { "intervalHours": 5, "enabled": true, "nextPage": 1 }
+      },
+      "lastPosted": {
+        "shopee": 0,
+        "lazada": 0,
+        "shein": 0,
+        "r18": 0
+      }
+    }
+  },
+  "postedHistory": {
+    "shopee": [],
+    "lazada": [],
+    "shein": [],
+    "r18": []
+  }
+}

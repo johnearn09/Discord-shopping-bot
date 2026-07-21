@@ -1,0 +1,402 @@
+[
+  {
+    "id": "lazada_01",
+    "title": "Robot Vacuum Cleaner Slim (Deal #1)",
+    "price": "₱1,815",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100001",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_02",
+    "title": "Waterproof Smart Sports Watch (Deal #2)",
+    "price": "₱560",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100002",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_03",
+    "title": "Noise Cancelling Headset (Deal #3)",
+    "price": "₱1,812",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100003",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_04",
+    "title": "Ergonomic Memory Foam Pillow (Deal #4)",
+    "price": "₱2,134",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100004",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_05",
+    "title": "Quick-Dry Athletic Shorts (Deal #5)",
+    "price": "₱1,841",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100005",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_06",
+    "title": "Smart LED Light Strip 5M (Deal #6)",
+    "price": "₱2,486",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100006",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_07",
+    "title": "Cordless Rechargeable Screwdriver (Deal #7)",
+    "price": "₱336",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100007",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_08",
+    "title": "Leather Crossbody Sling Bag (Deal #8)",
+    "price": "₱2,237",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100008",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_09",
+    "title": "Dual-Band WiFi 6 Router (Deal #9)",
+    "price": "₱2,074",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100009",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_10",
+    "title": "Electric Coffee Grinder (Deal #10)",
+    "price": "₱907",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100010",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_11",
+    "title": "Polarized Driving Sunglasses (Deal #11)",
+    "price": "₱2,490",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100011",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_12",
+    "title": "Dual Monitor Desk Mount (Deal #12)",
+    "price": "₱324",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100012",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_13",
+    "title": "Juicer Blender Extractor (Deal #13)",
+    "price": "₱856",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100013",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_14",
+    "title": "Canvas Backpack School Bag (Deal #14)",
+    "price": "₱1,382",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100014",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_15",
+    "title": "Wireless Presenter Clicker (Deal #15)",
+    "price": "₱168",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100015",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_16",
+    "title": "Digital Air Fryer 4.5L (Deal #16)",
+    "price": "₱2,434",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100016",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_17",
+    "title": "Sports Running Shoes (Deal #17)",
+    "price": "₱2,163",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100017",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_18",
+    "title": "External Hard Drive 1TB (Deal #18)",
+    "price": "₱289",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100018",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_19",
+    "title": "Portable Handheld Garment Steamer (Deal #19)",
+    "price": "₱1,016",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100019",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_20",
+    "title": "Casual Leather Belt (Deal #20)",
+    "price": "₱2,237",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100020",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_21",
+    "title": "1080p Web Camera with Mic (Deal #21)",
+    "price": "₱2,456",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100021",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_22",
+    "title": "Adjustable Metal Storage Rack (Deal #22)",
+    "price": "₱2,056",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100022",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_23",
+    "title": "Polar Fleece Jacket (Deal #23)",
+    "price": "₱1,933",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100023",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_24",
+    "title": "Mechanical Keyboard Red Switch (Deal #24)",
+    "price": "₱852",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100024",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_25",
+    "title": "Robot Vacuum Cleaner Slim (Deal #25)",
+    "price": "₱1,631",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100025",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_26",
+    "title": "Waterproof Smart Sports Watch (Deal #26)",
+    "price": "₱1,039",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100026",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_27",
+    "title": "Noise Cancelling Headset (Deal #27)",
+    "price": "₱697",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100027",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_28",
+    "title": "Ergonomic Memory Foam Pillow (Deal #28)",
+    "price": "₱1,486",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100028",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_29",
+    "title": "Quick-Dry Athletic Shorts (Deal #29)",
+    "price": "₱1,086",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100029",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_30",
+    "title": "Smart LED Light Strip 5M (Deal #30)",
+    "price": "₱1,505",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100030",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_31",
+    "title": "Cordless Rechargeable Screwdriver (Deal #31)",
+    "price": "₱554",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100031",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_32",
+    "title": "Leather Crossbody Sling Bag (Deal #32)",
+    "price": "₱1,444",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100032",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_33",
+    "title": "Dual-Band WiFi 6 Router (Deal #33)",
+    "price": "₱590",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100033",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_34",
+    "title": "Electric Coffee Grinder (Deal #34)",
+    "price": "₱2,231",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100034",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_35",
+    "title": "Polarized Driving Sunglasses (Deal #35)",
+    "price": "₱1,780",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100035",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_36",
+    "title": "Dual Monitor Desk Mount (Deal #36)",
+    "price": "₱2,254",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100036",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_37",
+    "title": "Juicer Blender Extractor (Deal #37)",
+    "price": "₱950",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100037",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_38",
+    "title": "Canvas Backpack School Bag (Deal #38)",
+    "price": "₱1,024",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100038",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_39",
+    "title": "Wireless Presenter Clicker (Deal #39)",
+    "price": "₱106",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100039",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_40",
+    "title": "Digital Air Fryer 4.5L (Deal #40)",
+    "price": "₱2,286",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100040",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_41",
+    "title": "Sports Running Shoes (Deal #41)",
+    "price": "₱1,578",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100041",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_42",
+    "title": "External Hard Drive 1TB (Deal #42)",
+    "price": "₱1,898",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100042",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_43",
+    "title": "Portable Handheld Garment Steamer (Deal #43)",
+    "price": "₱119",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100043",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "lazada_44",
+    "title": "Casual Leather Belt (Deal #44)",
+    "price": "₱655",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100044",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "lazada_45",
+    "title": "1080p Web Camera with Mic (Deal #45)",
+    "price": "₱1,062",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100045",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_46",
+    "title": "Adjustable Metal Storage Rack (Deal #46)",
+    "price": "₱998",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100046",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_47",
+    "title": "Polar Fleece Jacket (Deal #47)",
+    "price": "₱1,610",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100047",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_48",
+    "title": "Mechanical Keyboard Red Switch (Deal #48)",
+    "price": "₱432",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100048",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": null
+  },
+  {
+    "id": "lazada_49",
+    "title": "Robot Vacuum Cleaner Slim (Deal #49)",
+    "price": "₱1,391",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100049",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "lazada_50",
+    "title": "Waterproof Smart Sports Watch (Deal #50)",
+    "price": "₱365",
+    "url": "https://www.lazada.com.ph/products/deal-item-i100050",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": null
+  }
+]

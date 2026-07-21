@@ -1,0 +1,15 @@
+{
+  "name": "dc-shop-automations",
+  "version": "1.0.0",
+  "description": "Discord Shop Automation Bot",
+  "main": "src/bot.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/bot.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}

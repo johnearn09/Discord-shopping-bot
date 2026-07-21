@@ -1,0 +1,402 @@
+[
+  {
+    "id": "shein_01",
+    "title": "Silicone Protective Airpods Case (Deal #1)",
+    "price": "₱1,317",
+    "url": "https://ph.shein.com/style/deal-item-p-100001",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_02",
+    "title": "Bubble Bubble Soy Candle (Deal #2)",
+    "price": "₱149",
+    "url": "https://ph.shein.com/style/deal-item-p-100002",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_03",
+    "title": "Casual Denim Jacket (Deal #3)",
+    "price": "₱485",
+    "url": "https://ph.shein.com/style/deal-item-p-100003",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_04",
+    "title": "Mini Pocket Photo Printer (Deal #4)",
+    "price": "₱887",
+    "url": "https://ph.shein.com/style/deal-item-p-100004",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_05",
+    "title": "Marble Pattern Coaster Set (Deal #5)",
+    "price": "₱1,411",
+    "url": "https://ph.shein.com/style/deal-item-p-100005",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_06",
+    "title": "Classic Trench Coat (Deal #6)",
+    "price": "₱659",
+    "url": "https://ph.shein.com/style/deal-item-p-100006",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_07",
+    "title": "Silicone Protective Airpods Case (Deal #7)",
+    "price": "₱1,595",
+    "url": "https://ph.shein.com/style/deal-item-p-100007",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_08",
+    "title": "Bubble Bubble Soy Candle (Deal #8)",
+    "price": "₱603",
+    "url": "https://ph.shein.com/style/deal-item-p-100008",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_09",
+    "title": "High Waist Cargo Pants (Deal #9)",
+    "price": "₱1,138",
+    "url": "https://ph.shein.com/style/deal-item-p-100009",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_10",
+    "title": "Mini Pocket Photo Printer (Deal #10)",
+    "price": "₱1,298",
+    "url": "https://ph.shein.com/style/deal-item-p-100010",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_11",
+    "title": "Marble Pattern Coaster Set (Deal #11)",
+    "price": "₱2,143",
+    "url": "https://ph.shein.com/style/deal-item-p-100011",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_12",
+    "title": "Summer Pleated Skirt (Deal #12)",
+    "price": "₱837",
+    "url": "https://ph.shein.com/style/deal-item-p-100012",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_13",
+    "title": "Silicone Protective Airpods Case (Deal #13)",
+    "price": "₱1,071",
+    "url": "https://ph.shein.com/style/deal-item-p-100013",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_14",
+    "title": "Bubble Bubble Soy Candle (Deal #14)",
+    "price": "₱1,313",
+    "url": "https://ph.shein.com/style/deal-item-p-100014",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_15",
+    "title": "Lace Trim Satin Cami (Deal #15)",
+    "price": "₱569",
+    "url": "https://ph.shein.com/style/deal-item-p-100015",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_16",
+    "title": "Mini Pocket Photo Printer (Deal #16)",
+    "price": "₱485",
+    "url": "https://ph.shein.com/style/deal-item-p-100016",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_17",
+    "title": "Marble Pattern Coaster Set (Deal #17)",
+    "price": "₱125",
+    "url": "https://ph.shein.com/style/deal-item-p-100017",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_18",
+    "title": "Oversized Cable Knit Sweater (Deal #18)",
+    "price": "₱907",
+    "url": "https://ph.shein.com/style/deal-item-p-100018",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_19",
+    "title": "Silicone Protective Airpods Case (Deal #19)",
+    "price": "₱1,748",
+    "url": "https://ph.shein.com/style/deal-item-p-100019",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_20",
+    "title": "Bubble Bubble Soy Candle (Deal #20)",
+    "price": "₱1,168",
+    "url": "https://ph.shein.com/style/deal-item-p-100020",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_21",
+    "title": "Ribbed Crop Tank Top (Deal #21)",
+    "price": "₱814",
+    "url": "https://ph.shein.com/style/deal-item-p-100021",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_22",
+    "title": "Mini Pocket Photo Printer (Deal #22)",
+    "price": "₱2,053",
+    "url": "https://ph.shein.com/style/deal-item-p-100022",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_23",
+    "title": "Marble Pattern Coaster Set (Deal #23)",
+    "price": "₱1,346",
+    "url": "https://ph.shein.com/style/deal-item-p-100023",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_24",
+    "title": "Floral Print A-Line Dress (Deal #24)",
+    "price": "₱1,518",
+    "url": "https://ph.shein.com/style/deal-item-p-100024",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_25",
+    "title": "Silicone Protective Airpods Case (Deal #25)",
+    "price": "₱1,270",
+    "url": "https://ph.shein.com/style/deal-item-p-100025",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_26",
+    "title": "Bubble Bubble Soy Candle (Deal #26)",
+    "price": "₱757",
+    "url": "https://ph.shein.com/style/deal-item-p-100026",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_27",
+    "title": "Casual Denim Jacket (Deal #27)",
+    "price": "₱2,288",
+    "url": "https://ph.shein.com/style/deal-item-p-100027",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_28",
+    "title": "Mini Pocket Photo Printer (Deal #28)",
+    "price": "₱2,102",
+    "url": "https://ph.shein.com/style/deal-item-p-100028",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_29",
+    "title": "Marble Pattern Coaster Set (Deal #29)",
+    "price": "₱1,136",
+    "url": "https://ph.shein.com/style/deal-item-p-100029",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_30",
+    "title": "Classic Trench Coat (Deal #30)",
+    "price": "₱2,341",
+    "url": "https://ph.shein.com/style/deal-item-p-100030",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_31",
+    "title": "Silicone Protective Airpods Case (Deal #31)",
+    "price": "₱1,988",
+    "url": "https://ph.shein.com/style/deal-item-p-100031",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_32",
+    "title": "Bubble Bubble Soy Candle (Deal #32)",
+    "price": "₱691",
+    "url": "https://ph.shein.com/style/deal-item-p-100032",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_33",
+    "title": "High Waist Cargo Pants (Deal #33)",
+    "price": "₱1,064",
+    "url": "https://ph.shein.com/style/deal-item-p-100033",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_34",
+    "title": "Mini Pocket Photo Printer (Deal #34)",
+    "price": "₱945",
+    "url": "https://ph.shein.com/style/deal-item-p-100034",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_35",
+    "title": "Marble Pattern Coaster Set (Deal #35)",
+    "price": "₱1,894",
+    "url": "https://ph.shein.com/style/deal-item-p-100035",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_36",
+    "title": "Summer Pleated Skirt (Deal #36)",
+    "price": "₱1,545",
+    "url": "https://ph.shein.com/style/deal-item-p-100036",
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_37",
+    "title": "Silicone Protective Airpods Case (Deal #37)",
+    "price": "₱175",
+    "url": "https://ph.shein.com/style/deal-item-p-100037",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_38",
+    "title": "Bubble Bubble Soy Candle (Deal #38)",
+    "price": "₱1,948",
+    "url": "https://ph.shein.com/style/deal-item-p-100038",
+    "imageUrl": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_39",
+    "title": "Lace Trim Satin Cami (Deal #39)",
+    "price": "₱450",
+    "url": "https://ph.shein.com/style/deal-item-p-100039",
+    "imageUrl": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_40",
+    "title": "Mini Pocket Photo Printer (Deal #40)",
+    "price": "₱284",
+    "url": "https://ph.shein.com/style/deal-item-p-100040",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_41",
+    "title": "Marble Pattern Coaster Set (Deal #41)",
+    "price": "₱1,246",
+    "url": "https://ph.shein.com/style/deal-item-p-100041",
+    "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_42",
+    "title": "Oversized Cable Knit Sweater (Deal #42)",
+    "price": "₱219",
+    "url": "https://ph.shein.com/style/deal-item-p-100042",
+    "imageUrl": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_43",
+    "title": "Silicone Protective Airpods Case (Deal #43)",
+    "price": "₱547",
+    "url": "https://ph.shein.com/style/deal-item-p-100043",
+    "imageUrl": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_44",
+    "title": "Bubble Bubble Soy Candle (Deal #44)",
+    "price": "₱1,598",
+    "url": "https://ph.shein.com/style/deal-item-p-100044",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_45",
+    "title": "Ribbed Crop Tank Top (Deal #45)",
+    "price": "₱307",
+    "url": "https://ph.shein.com/style/deal-item-p-100045",
+    "imageUrl": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500",
+    "promoType": null
+  },
+  {
+    "id": "shein_46",
+    "title": "Mini Pocket Photo Printer (Deal #46)",
+    "price": "₱2,042",
+    "url": "https://ph.shein.com/style/deal-item-p-100046",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_47",
+    "title": "Marble Pattern Coaster Set (Deal #47)",
+    "price": "₱1,637",
+    "url": "https://ph.shein.com/style/deal-item-p-100047",
+    "imageUrl": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500",
+    "promoType": "day_sale"
+  },
+  {
+    "id": "shein_48",
+    "title": "Floral Print A-Line Dress (Deal #48)",
+    "price": "₱2,027",
+    "url": "https://ph.shein.com/style/deal-item-p-100048",
+    "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500",
+    "promoType": "flash_sale"
+  },
+  {
+    "id": "shein_49",
+    "title": "Silicone Protective Airpods Case (Deal #49)",
+    "price": "₱263",
+    "url": "https://ph.shein.com/style/deal-item-p-100049",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+    "promoType": "month_sale"
+  },
+  {
+    "id": "shein_50",
+    "title": "Bubble Bubble Soy Candle (Deal #50)",
+    "price": "₱378",
+    "url": "https://ph.shein.com/style/deal-item-p-100050",
+    "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500",
+    "promoType": "flash_sale"
+  }
+]
