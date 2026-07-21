@@ -135,7 +135,20 @@ async function checkAndPost(client, db, saveDb) {
                                 messageContent += `   👉 ${p.url}\n\n`;
                             });
 
-                            await channel.send({ content: messageContent.trim() });
+                            // Split content by paragraphs and send in chunks under 1900 chars to prevent 2000 char limit errors
+                            const paragraphs = messageContent.trim().split('\n\n');
+                            let currentBatch = '';
+                            for (const para of paragraphs) {
+                                if (currentBatch.length + para.length + 2 > 1900) {
+                                    await channel.send({ content: currentBatch.trim() });
+                                    currentBatch = para + '\n\n';
+                                } else {
+                                    currentBatch += para + '\n\n';
+                                }
+                            }
+                            if (currentBatch.trim().length > 0) {
+                                await channel.send({ content: currentBatch.trim() });
+                            }
                         } else {
                             // Send Lazada, Shein, R18 as beautiful Discord Embeds
                             const embeds = itemsToPost.map(p => {
