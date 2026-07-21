@@ -2,15 +2,19 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Fetches 10 items from a given category and page (1-5), and appends affiliate tracking params.
+ * Fetches 5 items from a given category and page (1-10), and appends affiliate tracking params.
  * @param {string} category - 'shopee', 'lazada', 'shein', or 'r18'
- * @param {number} page - page number (1-5)
+ * @param {number} page - page number (1-10)
  * @param {string} affiliateParams - tracking query string (e.g. '?exlaz=...')
  * @returns {Promise<Array>} List of formatted products
  */
 async function fetchDeals(category, page = 1, affiliateParams = '') {
-    const pageNum = Math.min(Math.max(parseInt(page) || 1, 1), 5);
-    const limit = 10;
+    const pageNum = Math.min(Math.max(parseInt(page) || 1, 1), 10);
+    const limit = 5;
+
+    // Clean affiliate parameters (strip quotes, trim spaces)
+    const cleanParams = (affiliateParams || '').replace(/^['"]|['"]$/g, '').trim();
+    const cleanAffiliateParams = cleanParams ? (cleanParams.startsWith('?') ? cleanParams : '?' + cleanParams) : '';
 
     if (category === 'r18') {
         try {
@@ -35,7 +39,6 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
 
                 const compareAtVal = p.variants && p.variants[0] && p.variants[0].compare_at_price ? parseFloat(p.variants[0].compare_at_price) || 0 : 0;
                 
-                // If on sale, calculate discount percent
                 if (compareAtVal > priceVal) {
                     promoType = 'flash_sale';
                     const discountPercent = Math.round(((compareAtVal - priceVal) / compareAtVal) * 100);
@@ -45,12 +48,9 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
                     }
                 }
 
-                const baseUrl = `https://shopilya.com/products/${p.handle}`;
-                const imageUrl = p.images && p.images[0] ? p.images[0].src : '';
-                
-                // Construct clean affiliate link
-                const cleanAffiliateParams = affiliateParams ? (affiliateParams.startsWith('?') ? affiliateParams : '?' + affiliateParams) : '';
-                const finalUrl = baseUrl + cleanAffiliateParams;
+                const baseUrl = `https://shopilya.com/products/${p.handle}`.trim();
+                const finalUrl = (baseUrl + cleanAffiliateParams).trim();
+                const imageUrl = p.images && p.images[0] ? p.images[0].src.trim() : '';
 
                 return {
                     id: `r18_${p.id}`,
@@ -69,7 +69,6 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
         }
     } else {
         try {
-            // Read from local JSON deal pool
             const filePath = path.join(__dirname, '..', 'deals', `${category}.json`);
             if (!fs.existsSync(filePath)) {
                 console.error(`Local deal pool file not found: ${filePath}`);
@@ -79,14 +78,13 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
             const rawData = fs.readFileSync(filePath, 'utf8');
             const allItems = JSON.parse(rawData);
 
-            // Paginate (slice 10 items)
             const startIndex = (pageNum - 1) * limit;
             const pageItems = allItems.slice(startIndex, startIndex + limit);
 
             return pageItems.map(item => {
-                const baseUrl = item.url;
-                const cleanAffiliateParams = affiliateParams ? (affiliateParams.startsWith('?') ? affiliateParams : '?' + affiliateParams) : '';
-                const finalUrl = baseUrl + cleanAffiliateParams;
+                const baseUrl = item.url.trim();
+                const finalUrl = (baseUrl + cleanAffiliateParams).trim();
+                const imageUrl = item.imageUrl ? item.imageUrl.trim() : '';
 
                 return {
                     id: item.id,
@@ -94,7 +92,7 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
                     price: item.price,
                     promoType: item.promoType || null,
                     url: finalUrl,
-                    imageUrl: item.imageUrl
+                    imageUrl: imageUrl
                 };
             });
         } catch (err) {
