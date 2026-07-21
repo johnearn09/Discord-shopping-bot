@@ -1,14 +1,6 @@
-const { EmbedBuilder } = require('discord.js');
 const { fetchDeals } = require('./fetcher');
 const fs = require('fs');
 const path = require('path');
-
-const BRAND_COLORS = {
-    shopee: '#EE4D2D',
-    lazada: '#0F136D',
-    shein: '#000000',
-    r18: '#9B111E'
-};
 
 const PLATFORM_NAMES = {
     shopee: 'Shopee Deals',
@@ -46,7 +38,8 @@ async function checkAndPost(client, db, saveDb) {
         if (now - lastPosted >= intervalMs) {
             console.log(`Category [${category}] is due for posting.`);
 
-            const count = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+            // Constrain to exactly 5 items so Discord generates native previews for all of them
+            const count = 5; 
             let itemsToPost = [];
             
             const affiliateEnvKey = `${category.toUpperCase()}_AFFILIATE_PARAMS`;
@@ -107,17 +100,11 @@ async function checkAndPost(client, db, saveDb) {
                     const channel = await client.channels.fetch(channelId);
                     if (channel && channel.isTextBased()) {
                         
-                        const embeds = itemsToPost.map(p => {
-                            const embed = new EmbedBuilder()
-                                .setURL(p.url)
-                                .setColor(BRAND_COLORS[category] || '#7289DA')
-                                .setImage(p.imageUrl || null)
-                                .setFooter({ text: `${PLATFORM_NAMES[category]}` });
+                        let messageContent = `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**\n\n`;
 
+                        itemsToPost.forEach((p, index) => {
                             let titleEmoji = '🛍️';
                             let titlePrefix = '';
-                            let descText = '';
-
                             if (p.promoType === 'flash_sale') {
                                 titleEmoji = '⚡';
                                 titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
@@ -129,24 +116,16 @@ async function checkAndPost(client, db, saveDb) {
                                 titlePrefix = ' [MONTHLY SPECIAL]';
                             }
 
-                            embed.setTitle(`${titleEmoji}${titlePrefix} ${p.title}`);
-
+                            messageContent += `${index + 1}. ${titleEmoji}**${titlePrefix} ${p.title}**\n`;
                             if (p.originalPrice && p.discountText) {
-                                descText = `~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n\n`;
+                                messageContent += `   *Price:* ~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n`;
                             } else {
-                                descText = `**Price:** ${p.price}\n\n`;
+                                messageContent += `   *Price:* **${p.price}**\n`;
                             }
-
-                            descText += `[Click to View Product](${p.url})`;
-                            embed.setDescription(descText);
-
-                            return embed;
+                            messageContent += `   👉 ${p.url}\n\n`;
                         });
 
-                        await channel.send({
-                            content: `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**`,
-                            embeds: embeds
-                        });
+                        await channel.send({ content: messageContent.trim() });
 
                         console.log(`Auto-posted ${itemsToPost.length} items for [${category}] to channel ${channelId}.`);
 
