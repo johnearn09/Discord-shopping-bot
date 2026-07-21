@@ -1,6 +1,14 @@
+const { EmbedBuilder } = require('discord.js');
 const { fetchDeals } = require('./fetcher');
 const fs = require('fs');
 const path = require('path');
+
+const BRAND_COLORS = {
+    shopee: '#EE4D2D',
+    lazada: '#0F136D',
+    shein: '#000000',
+    r18: '#9B111E'
+};
 
 const PLATFORM_NAMES = {
     shopee: 'Shopee Deals',
@@ -100,32 +108,77 @@ async function checkAndPost(client, db, saveDb) {
                     const channel = await client.channels.fetch(channelId);
                     if (channel && channel.isTextBased()) {
                         
-                        let messageContent = `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**\n\n`;
+                        if (category === 'shopee') {
+                            // Send Shopee as text
+                            let messageContent = `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**\n\n`;
 
-                        itemsToPost.forEach((p, index) => {
-                            let titleEmoji = '🛍️';
-                            let titlePrefix = '';
-                            if (p.promoType === 'flash_sale') {
-                                titleEmoji = '⚡';
-                                titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
-                            } else if (p.promoType === 'day_sale') {
-                                titleEmoji = '🔥';
-                                titlePrefix = ' [DAILY DEAL]';
-                            } else if (p.promoType === 'month_sale') {
-                                titleEmoji = '📅';
-                                titlePrefix = ' [MONTHLY SPECIAL]';
-                            }
+                            itemsToPost.forEach((p, index) => {
+                                let titleEmoji = '🛍️';
+                                let titlePrefix = '';
+                                if (p.promoType === 'flash_sale') {
+                                    titleEmoji = '⚡';
+                                    titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
+                                } else if (p.promoType === 'day_sale') {
+                                    titleEmoji = '🔥';
+                                    titlePrefix = ' [DAILY DEAL]';
+                                } else if (p.promoType === 'month_sale') {
+                                    titleEmoji = '📅';
+                                    titlePrefix = ' [MONTHLY SPECIAL]';
+                                }
 
-                            messageContent += `${index + 1}. ${titleEmoji}**${titlePrefix} ${p.title}**\n`;
-                            if (p.originalPrice && p.discountText) {
-                                messageContent += `   *Price:* ~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n`;
-                            } else {
-                                messageContent += `   *Price:* **${p.price}**\n`;
-                            }
-                            messageContent += `   👉 ${p.url}\n\n`;
-                        });
+                                messageContent += `${index + 1}. ${titleEmoji}**${titlePrefix} ${p.title}**\n`;
+                                if (p.originalPrice && p.discountText) {
+                                    messageContent += `   *Price:* ~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n`;
+                                } else {
+                                    messageContent += `   *Price:* **${p.price}**\n`;
+                                }
+                                messageContent += `   👉 ${p.url}\n\n`;
+                            });
 
-                        await channel.send({ content: messageContent.trim() });
+                            await channel.send({ content: messageContent.trim() });
+                        } else {
+                            // Send Lazada, Shein, R18 as beautiful Discord Embeds
+                            const embeds = itemsToPost.map(p => {
+                                const embed = new EmbedBuilder()
+                                    .setURL(p.url)
+                                    .setColor(BRAND_COLORS[category] || '#7289DA')
+                                    .setImage(p.imageUrl || null)
+                                    .setFooter({ text: `${PLATFORM_NAMES[category]}` });
+
+                                let titleEmoji = '🛍️';
+                                let titlePrefix = '';
+                                let descText = '';
+
+                                if (p.promoType === 'flash_sale') {
+                                    titleEmoji = '⚡';
+                                    titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
+                                } else if (p.promoType === 'day_sale') {
+                                    titleEmoji = '🔥';
+                                    titlePrefix = ' [DAILY DEAL]';
+                                } else if (p.promoType === 'month_sale') {
+                                    titleEmoji = '📅';
+                                    titlePrefix = ' [MONTHLY SPECIAL]';
+                                }
+
+                                embed.setTitle(`${titleEmoji}${titlePrefix} ${p.title}`);
+
+                                if (p.originalPrice && p.discountText) {
+                                    descText = `~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n\n`;
+                                } else {
+                                    descText = `**Price:** ${p.price}\n\n`;
+                                }
+
+                                descText += `[Click to View Product](${p.url})`;
+                                embed.setDescription(descText);
+
+                                return embed;
+                            });
+
+                            await channel.send({
+                                content: `🔔 **DAILY DEALS INCOMING! Posted ${itemsToPost.length} hot items on schedule:**`,
+                                embeds: embeds
+                            });
+                        }
 
                         console.log(`Auto-posted ${itemsToPost.length} items for [${category}] to channel ${channelId}.`);
 

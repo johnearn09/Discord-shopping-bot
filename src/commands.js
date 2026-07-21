@@ -124,34 +124,78 @@ async function handleCommand(message, db, saveDb) {
                     return feedbackMsg.edit(`❌ Failed to fetch products for **${PLATFORM_NAMES[categoryInput]}** (Page ${pageInput}). Please try again later.`);
                 }
 
-                // Build clean text message (Discord will automatically generate thumbnails and link previews)
-                let messageContent = `🛍️ **Showing 5 items from ${PLATFORM_NAMES[categoryInput]} (Page ${pageInput}/10):**\n\n`;
+                if (categoryInput === 'shopee') {
+                    // Send Shopee as clean text links so Discord generates previews and thumbnails natively
+                    let messageContent = `🛍️ **Showing 5 items from ${PLATFORM_NAMES[categoryInput]} (Page ${pageInput}/10):**\n\n`;
 
-                products.forEach((p, index) => {
-                    let titleEmoji = '🛍️';
-                    let titlePrefix = '';
-                    if (p.promoType === 'flash_sale') {
-                        titleEmoji = '⚡';
-                        titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
-                    } else if (p.promoType === 'day_sale') {
-                        titleEmoji = '🔥';
-                        titlePrefix = ' [DAILY DEAL]';
-                    } else if (p.promoType === 'month_sale') {
-                        titleEmoji = '📅';
-                        titlePrefix = ' [MONTHLY SPECIAL]';
-                    }
+                    products.forEach((p, index) => {
+                        let titleEmoji = '🛍️';
+                        let titlePrefix = '';
+                        if (p.promoType === 'flash_sale') {
+                            titleEmoji = '⚡';
+                            titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
+                        } else if (p.promoType === 'day_sale') {
+                            titleEmoji = '🔥';
+                            titlePrefix = ' [DAILY DEAL]';
+                        } else if (p.promoType === 'month_sale') {
+                            titleEmoji = '📅';
+                            titlePrefix = ' [MONTHLY SPECIAL]';
+                        }
 
-                    messageContent += `${index + 1}. ${titleEmoji}**${titlePrefix} ${p.title}**\n`;
-                    if (p.originalPrice && p.discountText) {
-                        messageContent += `   *Price:* ~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n`;
-                    } else {
-                        messageContent += `   *Price:* **${p.price}**\n`;
-                    }
-                    messageContent += `   👉 ${p.url}\n\n`;
-                });
+                        messageContent += `${index + 1}. ${titleEmoji}**${titlePrefix} ${p.title}**\n`;
+                        if (p.originalPrice && p.discountText) {
+                            messageContent += `   *Price:* ~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n`;
+                        } else {
+                            messageContent += `   *Price:* **${p.price}**\n`;
+                        }
+                        messageContent += `   👉 ${p.url}\n\n`;
+                    });
 
-                // Send products as text
-                await message.channel.send({ content: messageContent.trim() });
+                    await message.channel.send({ content: messageContent.trim() });
+                } else {
+                    // Send Lazada, Shein, R18 as beautiful Discord Embeds (since they worked fine before)
+                    const embeds = products.map(p => {
+                        const embed = new EmbedBuilder()
+                            .setURL(p.url)
+                            .setColor(BRAND_COLORS[categoryInput] || '#7289DA')
+                            .setImage(p.imageUrl || null)
+                            .setFooter({ text: `${PLATFORM_NAMES[categoryInput]} • Page ${pageInput}/10` });
+
+                        let titleEmoji = '🛍️';
+                        let titlePrefix = '';
+                        let descText = '';
+
+                        if (p.promoType === 'flash_sale') {
+                            titleEmoji = '⚡';
+                            titlePrefix = ` [FLASH SALE${p.discountText ? ` - ${p.discountText}` : ''}]`;
+                        } else if (p.promoType === 'day_sale') {
+                            titleEmoji = '🔥';
+                            titlePrefix = ' [DAILY DEAL]';
+                        } else if (p.promoType === 'month_sale') {
+                            titleEmoji = '📅';
+                            titlePrefix = ' [MONTHLY SPECIAL]';
+                        }
+
+                        embed.setTitle(`${titleEmoji}${titlePrefix} ${p.title}`);
+
+                        if (p.originalPrice && p.discountText) {
+                            descText = `~~${p.originalPrice}~~ **${p.price}** \`(${p.discountText})\`\n\n`;
+                        } else {
+                            descText = `**Price:** ${p.price}\n\n`;
+                        }
+
+                        descText += `[Click to View Product](${p.url})`;
+                        embed.setDescription(descText);
+
+                        return embed;
+                    });
+
+                    await message.channel.send({
+                        content: `🛍️ **Showing 5 items from ${PLATFORM_NAMES[categoryInput]} (Page ${pageInput}/10):**`,
+                        embeds: embeds
+                    });
+                }
+
                 await feedbackMsg.delete().catch(() => {});
             } catch (err) {
                 console.error(`Error executing shop command:`, err.message);
