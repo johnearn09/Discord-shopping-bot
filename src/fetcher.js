@@ -3,6 +3,7 @@ const path = require('path');
 
 /**
  * Fetches 5 items from a given category and page (1-10), and appends affiliate tracking params.
+ * Uses a live Reddit RSS aggregator for Shopee and Lazada, and falls back to local database files.
  * @param {string} category - 'shopee', 'lazada', 'shein', or 'r18'
  * @param {number} page - page number (1-10)
  * @param {string} affiliateParams - tracking query string (e.g. '?exlaz=...')
@@ -78,7 +79,93 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
             console.error(`Error fetching Shopilya (r18) products page ${pageNum}:`, err.message);
             return [];
         }
+    } else if (category === 'shopee' || category === 'lazada') {
+        const liveDeals = [];
+        
+        try {
+            // Attempt to fetch from r/ShopeePH RSS feed via rss2json converter (bypasses bot blocks)
+            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.reddit.com/r/ShopeePH/new.rss', {
+                headers: { 'User-Agent': 'Mozilla/5.0' }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.status === 'ok' && data.items) {
+                    for (const item of data.items) {
+                        const content = item.content || '';
+                        
+                        // Parse target link based on category
+                        let linkMatch = null;
+                        if (category === 'shopee') {
+                            // Match shope.ee or shopee.ph links
+                            linkMatch = content.match(/href="(https:\/\/shope\.ee\/[a-zA-Z0-9]+|https:\/\/shopee\.ph\/[a-zA-Z0-9\-_.?=%&]+)"/i);
+                        } else if (category === 'lazada') {
+                            // Match s.lazada.com.ph or lazada.com.ph links
+                            linkMatch = content.match(/href="(https:\/\/s\.lazada\.com\.ph\/[a-zA-Z0-9\-_.?=%&]+|https:\/\/www\.lazada\.com\.ph\/products\/[a-zA-Z0-9\-_.?=%&]+)"/i);
+                        }
+                        
+                        if (linkMatch) {
+                            const rawUrl = linkMatch[1];
+                            // Clean up url query parts before appending user affiliate params
+                            const cleanUrl = rawUrl.split('?')[0]; 
+                            const finalUrl = (cleanUrl + cleanAffiliateParams).trim();
+                            
+                            // Clean title (remove reddit tags)
+                            let cleanTitle = item.title.replace(/\[.*?\]/g, '').trim();
+                            if (cleanTitle.length > 80) cleanTitle = cleanTitle.substring(0, 77) + '...';
+
+                            liveDeals.push({
+                                id: `${category}_live_${item.guid.split('/').pop()}`,
+                                title: cleanTitle,
+                                price: '₱ (See site for price)',
+                                promoType: 'day_sale',
+                                url: finalUrl,
+                                imageUrl: ''
+                            });
+
+                            if (liveDeals.length >= limit) break;
+                        }
+                    }
+                }
+            }
+        } catch (err) {
+            console.error(`Failed to fetch live RSS deals for ${category}:`, err.message);
+        }
+
+        // Fallback: If we didn't find enough live deals (limit of 5), fill the rest from local JSON pool
+        try {
+            const filePath = path.join(__dirname, '..', 'deals', `${category}.json`);
+            if (fs.existsSync(filePath)) {
+                const rawData = fs.readFileSync(filePath, 'utf8');
+                const allItems = JSON.parse(rawData);
+                
+                const startIndex = (pageNum - 1) * limit;
+                let index = startIndex;
+
+                while (liveDeals.length < limit) {
+                    const fallbackItem = allItems[index % allItems.length];
+                    const baseUrl = fallbackItem.url.trim();
+                    const finalUrl = (baseUrl + cleanAffiliateParams).trim();
+
+                    liveDeals.push({
+                        id: fallbackItem.id,
+                        title: fallbackItem.title,
+                        price: fallbackItem.price,
+                        promoType: fallbackItem.promoType || null,
+                        url: finalUrl,
+                        imageUrl: fallbackItem.imageUrl ? fallbackItem.imageUrl.trim() : ''
+                    });
+
+                    index++;
+                }
+            }
+        } catch (err) {
+            console.error(`Error loading fallback deals for ${category}:`, err.message);
+        }
+
+        return liveDeals.slice(0, limit);
     } else {
+        // Shein Category: Local pool fallback
         try {
             const filePath = path.join(__dirname, '..', 'deals', `${category}.json`);
             if (!fs.existsSync(filePath)) {
@@ -89,7 +176,6 @@ async function fetchDeals(category, page = 1, affiliateParams = '') {
             const rawData = fs.readFileSync(filePath, 'utf8');
             const allItems = JSON.parse(rawData);
 
-            // Dynamically calculate maximum pages based on item count
             const maxPages = Math.max(Math.ceil(allItems.length / limit), 1);
             const actualPageNum = Math.min(pageNum, maxPages);
 
